@@ -1,5 +1,5 @@
 %define	name	opencdk
-%define	version	0.5.8
+%define	version	0.5.13
 %define release	%mkrel 1
 
 %define libgcrypt_version 1.1.94
@@ -7,6 +7,7 @@
 %define major	8
 %define libname %mklibname %{name} %{major}
 %define libname_orig lib%{name}
+%define develname %mklibname %{name} -d
 
 Summary:	Open Crypto Development Kit
 Name:		%{name}
@@ -15,14 +16,11 @@ Release:	%{release}
 License:	GPL
 Group:		System/Libraries
 URL:		http://www.gnutls.org/
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
 Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.gz.sig
-#Patch0:		opencdk-0.5.4-automake18.patch.bz2
-
 BuildRequires:	zlib-devel
 BuildRequires:	libgcrypt-devel >= %{libgcrypt_version}
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 %{name} library provides basic parts of the OpenPGP message format.
@@ -56,15 +54,16 @@ packets and to use basic operations. For example to encrypt/decrypt
 or to sign/verify and packet routines.
 
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Development files for %{name}
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	%{libname_orig}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 Requires:	libgcrypt-devel >= %{libgcrypt_version}
+Obsoletes:	%mklibname %{name} 8 -d
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 %{name} library provides basic parts of the OpenPGP message format.
 
 You will need to install this package if you want to develop or 
@@ -72,11 +71,12 @@ compile any applications/libraries that use %{name}.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .automake18
 
 %build
 %configure2_5x
 %make
+
+%check
 make check
 
 %install
@@ -96,9 +96,9 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %doc doc/DETAILS doc/opencdk-api.html
@@ -109,3 +109,4 @@ rm -rf %{buildroot}
 %{_libdir}/lib*.so
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
+%{_libdir}/pkgconfig/opencdk.pc
