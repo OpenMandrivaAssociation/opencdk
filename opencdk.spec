@@ -20,7 +20,6 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.
 Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.gz.sig
 BuildRequires:	zlib-devel
 BuildRequires:	libgcrypt-devel >= %{libgcrypt_version}
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 %{name} library provides basic parts of the OpenPGP message format.
