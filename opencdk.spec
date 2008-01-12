@@ -1,10 +1,10 @@
 %define	name	opencdk
-%define	version	0.5.13
+%define	version	0.6.6
 %define release	%mkrel 1
 
 %define libgcrypt_version 1.1.94
 
-%define major	8
+%define major	10
 %define libname %mklibname %{name} %{major}
 %define libname_orig lib%{name}
 %define develname %mklibname %{name} -d
@@ -13,11 +13,11 @@ Summary:	Open Crypto Development Kit
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.gnutls.org/
-Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.gz
-Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.gz.sig
+Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.bz2
+Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	zlib-devel
 BuildRequires:	libgcrypt-devel >= %{libgcrypt_version}
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -101,8 +101,8 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
-%doc doc/DETAILS doc/opencdk-api.html
-%{_bindir}/*-config
+%doc doc/opencdk-api.html
+%{_bindir}/opencdk-config
 %multiarch %{multiarch_bindir}/*-config
 %{_datadir}/aclocal/*.m4
 %{_includedir}/*
