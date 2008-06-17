@@ -1,6 +1,6 @@
 %define	name	opencdk
 %define	version	0.6.6
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define libgcrypt_version 1.1.94
 
