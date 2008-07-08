@@ -1,7 +1,3 @@
-%define	name	opencdk
-%define	version	0.6.6
-%define release	%mkrel 2
-
 %define libgcrypt_version 1.1.94
 
 %define major	10
@@ -10,14 +6,14 @@
 %define develname %mklibname %{name} -d
 
 Summary:	Open Crypto Development Kit
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		opencdk
+Version:	0.6.6
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.gnutls.org/
-Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.bz2
-Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/gnutls/opencdk/%{name}-%{version}.tar.bz2.sig
+Source0:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2
+Source1:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	zlib-devel
 BuildRequires:	libgcrypt-devel >= %{libgcrypt_version}
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -33,7 +29,6 @@ alter preferences, ...) and some other parts are only rudimentary
 available. The main purpose is to handle and understand OpenPGP
 packets and to use basic operations. For example to encrypt/decrypt
 or to sign/verify and packet routines.
-
 
 %package -n	%{libname}
 Summary:	Open Crypto Development Kit
@@ -70,6 +65,7 @@ You will need to install this package if you want to develop or
 compile any applications/libraries that use %{name}.
 
 %prep
+
 %setup -q
 
 %build
@@ -81,6 +77,7 @@ make check
 
 %install
 rm -rf %{buildroot}
+
 %makeinstall_std
 
 install -D -m 644 src/opencdk.m4 %{buildroot}%{_datadir}/aclocal/opencdk.m4
@@ -90,6 +87,7 @@ install -D -m 644 src/opencdk.m4 %{buildroot}%{_datadir}/aclocal/opencdk.m4
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
 %endif
+
 %if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
