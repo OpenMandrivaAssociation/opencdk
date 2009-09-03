@@ -8,7 +8,7 @@
 Summary:	Open Crypto Development Kit
 Name:		opencdk
 Version:	0.6.6
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.gnutls.org/
