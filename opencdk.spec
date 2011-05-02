@@ -8,7 +8,7 @@
 Summary:	Open Crypto Development Kit
 Name:		opencdk
 Version:	0.6.6
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.gnutls.org/
@@ -105,7 +105,7 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %doc doc/opencdk-api.html
 %{_bindir}/opencdk-config
-%multiarch %{multiarch_bindir}/*-config
+%{multiarch_bindir}/*-config
 %{_datadir}/aclocal/*.m4
 %{_includedir}/*
 %{_libdir}/lib*.so
