@@ -11,7 +11,7 @@ Version:	0.6.6
 Release:	%mkrel 7
 License:	GPLv2+
 Group:		System/Libraries
-URL:		http://www.gnutls.org/
+URL:		https://www.gnutls.org/
 Source0:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2
 Source1:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	zlib-devel
