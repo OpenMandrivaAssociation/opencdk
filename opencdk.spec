@@ -14,6 +14,11 @@ Group:		System/Libraries
 URL:		https://www.gnutls.org/
 Source0:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2
 Source1:	http://www.gnu.org/software/gnutls/releases/opencdk/%{name}-%{version}.tar.bz2.sig
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	zlib-devel
 BuildRequires:	libgcrypt-devel >= %{libgcrypt_version}
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
